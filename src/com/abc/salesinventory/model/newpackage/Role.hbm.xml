@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.Role" table="role" catalog="flowtech">
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="100" />
+        </property>
+        <set name="rolePermissions" table="role_permission" inverse="true" lazy="true" cascade="all,delete-orphan" fetch="select">
+            <key>
+                <column name="role_id" length="45" not-null="true" />
+            </key>
+            <one-to-many class="com.abc.salesinventory.model.newpackage.RolePermission" />
+        </set>
+        <set name="userRoles" table="user_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_id" length="45" not-null="true" />
+            </key>
+            <one-to-many class="com.abc.salesinventory.model.newpackage.UserRole" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="675817dd-8d0c-40d8-aa2a-ac9346d7b03b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     product.`product_code` AS product_product_code,
+     product.`product_name` AS product_product_name,
+     product.`category` AS product_category,
+     product.`unit` AS product_unit,
+     product.`reorder_level` AS product_reorder_level,
+     stock.`stock_id` AS stock_stock_id,
+     stock.`product_code` AS stock_product_code,
+     stock.`supplier_id` AS stock_supplier_id,
+     stock.`quantity` AS stock_quantity,
+     stock.`exp_date` AS stock_exp_date,
+     stock.`purchased_unit_price` AS stock_purchased_unit_price,
+     supplier.`id` AS supplier_id,
+     supplier.`name` AS supplier_name,
+     supplier.`mobile` AS supplier_mobile,
+     supplier.`home` AS supplier_home,
+     supplier.`office` AS supplier_office,
+     supplier.`email` AS supplier_email,
+     supplier.`address` AS supplier_address
+FROM
+     `product` product INNER JOIN `stock` stock ON product.`product_code` = stock.`product_code`
+     INNER JOIN `supplier` supplier ON stock.`supplier_id` = supplier.`id`]]>
+	</queryString>
+	<field name="product_product_name" class="java.lang.String"/>
+	<field name="stock_stock_id" class="java.lang.String"/>
+	<field name="supplier_name" class="java.lang.String"/>
+	<field name="stock_quantity" class="java.lang.Double"/>
+	<field name="stock_purchased_unit_price" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="77" y="13" width="413" height="33" uuid="f4c40fe4-2166-4b9c-916e-69c408194679"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ Flow Tech Engineering (Pvt) Ltd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="197" y="46" width="165" height="22" uuid="344b673e-5e81-43b4-aca4-5f506bbd505e"/>
+				<text><![CDATA[Stock Details Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="1fa0df01-fa79-448c-b0c4-c514df673301"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="111" y="21" width="111" height="15" uuid="9da6d254-c389-4b7d-8f76-a5b22adce5b5"/>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="111" height="15" uuid="b4fea796-c18f-41c0-966e-06d9a96ca6ff"/>
+				<text><![CDATA[Supplier Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="19" width="111" height="15" uuid="d0f42bd7-f6f3-4ad4-a0eb-f85549f67019"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="19" width="111" height="15" uuid="e390bd4b-c4aa-407f-be53-16ff1eac30e4"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="111" height="15" uuid="1f7ca9a0-a447-4208-ae68-7c4029d5f7e6"/>
+				<text><![CDATA[Stock ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="59f88597-8d56-4b69-9293-686d7c2f5a2b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="663944c9-36f8-40bc-9acf-47e9bd2d984a"/>
+				<textFieldExpression><![CDATA[$F{stock_stock_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="aa5a57d2-f0a1-4055-8d5f-036c51ab27c3"/>
+				<textFieldExpression><![CDATA[$F{supplier_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="0" width="111" height="15" uuid="2d4a9aed-bc86-421e-b7dc-c978c4af0353"/>
+				<textFieldExpression><![CDATA[$F{stock_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="444" y="0" width="111" height="15" uuid="6a5cd8bf-ca87-4341-be1e-f3a3d3862d90"/>
+				<textFieldExpression><![CDATA[$F{stock_purchased_unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="61eb68b7-124d-4b09-aa7b-1d13251d12b9"/>
+				<textFieldExpression><![CDATA[$F{product_product_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="8527e35e-6674-43f2-af58-248e9733ee50"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="65399f1b-0b7a-4f79-95d6-eea670f34d04"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="80100e41-32f3-4a29-a80b-1d276631f20d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="37465954-ab21-4dc3-a34b-e317af69e8af"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

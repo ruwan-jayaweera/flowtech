@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.User" table="user" catalog="flowtech">
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="userid" type="string">
+            <column name="userid" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" />
+        </property>
+        <set name="userRoles" table="user_role" inverse="true" lazy="true" fetch="select" cascade="all,delete-orphan">
+            <key>
+                <column name="user_id" length="45" not-null="true" />
+            </key>
+            <one-to-many class="com.abc.salesinventory.model.newpackage.UserRole" />
+        </set>
+    </class>
+</hibernate-mapping>

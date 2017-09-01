@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.Product" table="product" catalog="flowtech">
+        <id name="productCode" type="string">
+            <column name="product_code" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="productName" type="string">
+            <column name="product_name" length="45" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="45" />
+        </property>
+        <property name="unit" type="string">
+            <column name="unit" length="45" />
+        </property>
+        <property name="reOrderLevel" type="int">
+            <column name="reorder_level" length="15" />
+        </property>
+        <property name="standardReOrderLevel" type="int">
+            <column name="standard_reorder_level" length="15" />
+        </property>
+    </class>
+</hibernate-mapping>

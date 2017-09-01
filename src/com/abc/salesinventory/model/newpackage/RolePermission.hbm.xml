@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.RolePermission" table="role_permission" catalog="flowtech">
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="permission" class="com.abc.salesinventory.model.newpackage.Permission" fetch="select">
+            <column name="permission_id" length="45" not-null="true" />
+        </many-to-one>
+        <many-to-one name="role" class="com.abc.salesinventory.model.newpackage.Role" fetch="select">
+            <column name="role_id" length="45" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

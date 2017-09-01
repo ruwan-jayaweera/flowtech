@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.Transaction" table="transaction" catalog="flowtech">
+        <id name="transactionId" type="string">
+            <column name="transaction_id" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="customer" class="com.abc.salesinventory.model.newpackage.Customer" fetch="select">
+            <column name="customer_id" length="45" />
+        </many-to-one>
+        <many-to-one name="supplier" class="com.abc.salesinventory.model.newpackage.Supplier" fetch="select">
+            <column name="supplier_id" length="45" />
+        </many-to-one>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="total" type="double">
+            <column name="total" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="transactionType" type="string">
+            <column name="transaction_type" length="45" not-null="true" />
+        </property>
+        <property name="paymentMethod" type="string">
+            <column name="payment_method" length="45" not-null="true" />
+        </property>
+        <set name="transactionDetails" table="transaction_detail" inverse="true" lazy="true" fetch="select" cascade="save-update">
+            <key>
+                <column name="transaction_id" length="45" />
+            </key>
+            <one-to-many class="com.abc.salesinventory.model.newpackage.TransactionDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

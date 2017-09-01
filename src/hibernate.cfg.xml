@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/flowtech?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping resource="com/abc/salesinventory/model/newpackage/User.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/RolePermission.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/UserRole.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Role.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Permission.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Customer.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Supplier.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Product.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/TransactionDetail.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Transaction.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Stock.hbm.xml"/>
+    <mapping resource="com/abc/salesinventory/model/newpackage/Message.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

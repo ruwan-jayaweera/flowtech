@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 11, 2014 2:22:10 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.abc.salesinventory.model.newpackage.Customer" table="customer" catalog="flowtech">
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="45" />
+        </property>
+        <property name="home" type="string">
+            <column name="home" length="45" />
+        </property>
+        <property name="office" type="string">
+            <column name="office" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

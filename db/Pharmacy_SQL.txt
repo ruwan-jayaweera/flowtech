@@ -1,0 +1,64 @@
+
+CREATE TABLE item (
+  item_no int NOT NULL AUTO_INCREMENT,
+  item_code varchar(30) NOT NULL UNIQUE,
+  brand_name varchar(60) NOT NULL,
+  supplier varchar(100) NOT NULL,  
+  category varchar(50) NOT NULL,  
+  unit_price float NOT NULL,
+  reorder_level float NOT NULL,
+  unit varchar(50) NOT NULL, 
+  PRIMARY KEY (item_no)
+) 
+
+
+CREATE TABLE stock (
+  stock_ID int NOT NULL AUTO_INCREMENT,
+  item_No int NOT NULL,
+  expiry_date date NOT NULL,
+  added_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  qty float NOT NULL,  
+  PRIMARY KEY (stock_ID)
+) 
+
+
+CREATE TABLE sell (
+  sell_ID int NOT NULL,
+  sell_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  total_price float NOT NULL,
+  PRIMARY KEY (sell_ID)
+)
+
+
+CREATE TABLE sold_stock (
+  sell_ID int NOT NULL,
+  item_No int NOT NULL,
+  qty float NOT NULL, 
+  price float NOT NULL,
+  PRIMARY KEY (sell_ID,item_No)
+)
+
+ALTER TABLE sold_stock 
+  ADD CONSTRAINT sold_stock_ibfk_1 FOREIGN KEY (sell_ID) REFERENCES sell (sell_ID) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE sold_stock 
+  ADD CONSTRAINT sold_stock_ibfk_2 FOREIGN KEY (item_No) REFERENCES item (item_no) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE stock
+  ADD CONSTRAINT stock_ibfk_1 FOREIGN KEY (item_No) REFERENCES item (item_no) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+  
+  
+INSERT INTO `item` (`item_code`,`brand_name`, `supplier`, `category`, `unit_price`, `reorder_level`, `unit`) VALUES
+('TEST001','Arudha', 'Gampaha Wickramarachchi', 'Oil', 1.748, 250, 'ml'),
+('TEST002','Neelyadhi', 'Gampaha Wickramarachchi', 'Oil', 0.912, 250, 'ml'),
+('TEST003','Ashwagandha', 'Gampaha Wickramarachchi', 'Oil', 1.780, 250, 'ml'),
+('TEST004','Yogaraja', 'Gampaha Wickramarachchi', 'Guggulu', 5.04, 50, 'tablet'),
+('TEST005','Ashwagandha', 'Gampaha Wickramarachchi', 'Churna', 1.36, 100, 'g');
+
+
+INSERT INTO `stock` (`item_No`, `expiry_date`, `added_date`, `qty`) VALUES
+(1, '2015-02-12', '2014-02-11 18:53:49', 2500),
+(2, '2014-03-21', '2014-02-11 18:53:49', 3000),
+(4, '2015-02-24', '2014-02-11 18:53:49', 750),
+(5, '2015-12-12', '2014-02-11 18:53:49', 500),
+(4, '2017-02-12', '2014-02-11 18:53:49', 500);
